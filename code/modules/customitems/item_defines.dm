@@ -1592,6 +1592,9 @@
 			if("fedeng")
 				src.icon_state = "fedeng_open"
 				usr << "You unbutton the coat."
+			if("fedcapt")
+				src.icon_state = "fedcapt_open"
+				usr << "You unbutton the coat."
 			else
 				usr << "You attempt to button-up the velcro on your [src], before promptly realising how retarded you are."
 				return
@@ -1614,6 +1617,15 @@
 	item_state = "fedeng"
 	item_color = "fedeng"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 10, bomb = 0, bio = 30, rad = 35)
+
+/obj/item/clothing/suit/storage/fluff/fedcoat/fedcapt
+	name = "Federation Uniform Jacket"
+	desc = "A uniform jacket from the United Federation. Starfleet still uses this uniform and there are variations of it. You feel like a commanding officer of Starfleet."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "fedcapt"
+	item_state = "fedcapt"
+	item_color = "fedcapt"
+	armor = list(melee = 50, bullet = 5, laser = 15,energy = 10, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/glasses/fluff/yellow
 	name = "Yellow Goggles"
@@ -1752,6 +1764,13 @@
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
+/obj/item/clothing/shoes/cuffs/octavious //Octavious Ward, tasald's char
+	desc = "Dark leather leg wraps with sliver clasps on the sides. Stylish and functional."
+	name = "silvered leg wraps"
+	icon_state = "silvergildedcuffs"
+	item_color = "silvergildedcuffs"
+	body_parts_covered = 0
+	species_restricted = null
 
 /obj/item/clothing/head/squirrel/joan //Because I hate the ears matching hair color -Joan
 	name = "squirrel ears"
@@ -2100,7 +2119,27 @@
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to openly carry one Colt Single-Action Army revolver as a security officer or head of staff. Else this weapon is to be turned in to security for holding until the end of the shift.
 	This license expires on 26/Dec/2559 and must be renewed by CentCom prior to this date."}
 
-// Joan Risu
+// bwoincognito:Tasald Corlethian
+/obj/item/fluff/permit/tasald_corlethian
+	name = "Tasald Ajax Corlethian's Sidearm Permit"
+	desc = {"
+	<b>NAME:</b> Tasald Ajax Corlethian | <b>RACE:</b> Vulpine | <b>HOMEWORLD:</b> Iscyn, Orta
+	<b>DOB:</b> 09/Sep/2529 | <b>HEIGHT:</b> 187cm | <b>SEX:</b> Male
+
+	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one .38 pistol.
+	This license expires on 30/March/2561 and must be renewed by CentCom prior to this date."}
+
+// arokha:Aronai Kadigan
+/obj/item/fluff/permit/aronai_kadigan
+	name = "Aronai Kadigan's Sidearm Permit"
+	desc = {"
+	<b>NAME:</b> Aronai Kadigan | <b>RACE:</b> Cross Fox | <b>HOMEWORLD:</b> New Kitsuhana, KHI1
+	<b>DOB:</b>  12/Jul/2530 | <b>HEIGHT:</b> 188cm | <b>SEX:</b> Male
+
+	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one KIN-H21 (Egun Variant).
+	This license expires on 30/Sep/2560 and must be renewed by CentCom prior to this date."}
+
+// joanrisu:Joan Risu
 /obj/item/fluff/permit/joanrisu
 	name = "Joan Risu's Sidearm Permit"
 	desc = {"
@@ -2110,38 +2149,8 @@
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one MWPSB Dominator.
 	This license expires on 11/Dec/2560 and must be renewed by CentCom prior to this date."}
 
-//Greyson Maximus
-/obj/item/fluff/permit/demi
-	name = "Greyson Maximus's Sidearm Permit"
-	desc = {"
-	<b>NAME:</b> Greyson Maximus | <b>RACE:</b> Neko/Catgirl | <b>HOMEWORLD:</b> N/A
-	<b>DOB:</b> 30/May/2536 | <b>HEIGHT:</b> 198cm | <b>SEX:</b> Herm
-
-	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one M1911.
-	This license expires on 11/Dec/2559 and must be renewed by CentCom prior to this date."}
-
-//Tasald Ajax Corlethian
-/obj/item/fluff/permit/tasald
-	name = "Tasald Ajax Corlethian's Sidearm Permit"
-	desc = {"
-	<b>NAME:</b> Tasald Ajax Corlethian | <b>RACE:</b> Vulpine | <b>HOMEWORLD:</b> Iscyn, Orta
-	<b>DOB:</b> 09/Sep/2529 | <b>HEIGHT:</b> 187cm | <b>SEX:</b> Male
-
-	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one Energy Luger.
-	This license expires on 26/Sep/2560 and must be renewed by CentCom prior to this date."}
-
-//Aronai Kadigan
-/obj/item/fluff/permit/aro
-	name = "Aronai Kadigan's Sidearm Permit"
-	desc = {"
-	<b>NAME:</b> Aronai Kadigan | <b>RACE:</b> Cross Fox | <b>HOMEWORLD:</b> New Kitsuhana, KHI1
-	<b>DOB:</b>  12/Jul/2530 | <b>HEIGHT:</b> 188cm | <b>SEX:</b> Male
-
-	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one KIN-H21 (Egun Variant).
-	This license expires on 30/Sep/2560 and must be renewed by CentCom prior to this date."}
-
-//Kari Akiren
-/obj/item/fluff/permit/kari
+// molenar:Kari Akiren
+/obj/item/fluff/permit/kari_akiren
 	name = "Kari Akiren's Rifle Permit"
 	desc = {"
 	<b>NAME:</b> Kari Akiren | <b>RACE:</b> Inkling | <b>HOMEWORLD:</b> Supesu
@@ -2150,6 +2159,17 @@
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one Clockwork Rifle (bolt-action variant).
 	This license expires on 14/Dec/2560 and must be renewed by CentCom prior to this date."}
 
+/*
+// ?????:Greyson Maximus
+/obj/item/fluff/permit/demi
+	name = "Greyson Maximus's Sidearm Permit"
+	desc = {"
+	<b>NAME:</b> Greyson Maximus | <b>RACE:</b> Neko/Catgirl | <b>HOMEWORLD:</b> N/A
+	<b>DOB:</b> 30/May/2536 | <b>HEIGHT:</b> 198cm | <b>SEX:</b> Herm
+
+	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one M1911.
+	This license expires on 11/Dec/2559 and must be renewed by CentCom prior to this date."}
+*/
 
 //Boxes of goodies for veteran players.
 
@@ -2256,7 +2276,7 @@
 		user << "<span class='warning'>This isn't even an ID card you idiot.</span>"
 		return
 
-/obj/item/weapon/storage/box/fluff/mime // joey4298:Emoticon
+/obj/item/weapon/storage/box/fluff/emoticon // joey4298:Emoticon
 	name = "Emoticon's Mime Kit"
 	desc = "Specially packaged for the hungry catgirl mime with a taste for clown."
 
@@ -2288,12 +2308,15 @@
 /obj/item/weapon/storage/box/fluff/tasaldkit // bwoincognito:Tasald Corlethian
 	name = "Tasald's Kit"
 	desc = "A kit containing Talsald's clothes."
-	storage_slots = 2
+	storage_slots = 7
 
 /obj/item/weapon/storage/box/fluff/tasaldkit/New()
 	new /obj/item/clothing/suit/storage/det_suit/fluff/tasald(src)
-	new /obj/item/clothing/under/det/fluff/tasald(src)
 	new /obj/item/clothing/suit/storage/det_suit/fluff/tas_coat(src)
+	new /obj/item/clothing/under/det/fluff/tasald(src)
+	new /obj/item/fluff/permit/tasald_corlethian(src)
+	new /obj/item/weapon/gun/projectile/revolver/detective/fluff/tasald_corlethian(src)
+	new /obj/item/weapon/implanter/loyalty
 	..()
 	return
 
@@ -2303,7 +2326,7 @@
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "clockworkkit"
 	from_object = /obj/item/weapon/gun/projectile/shotgun/pump/rifle
-	to_object = /obj/item/weapon/gun/projectile/shotgun/pump/rifle/clockwork
+	to_object = /obj/item/weapon/gun/projectile/shotgun/pump/rifle/fluff/kari_akiren
 
 /obj/item/clothing/suit/storage/toggle/labcoat/fluff/molenar // molenar:Giliana Gamish
 	name = "Gili Custom Labcoat"
@@ -2378,3 +2401,43 @@
 	reagents.add_reagent("tricordrazine", 25)
 	update_icon()
 	return
+
+//wickedtemp:Chakat Tempest
+/obj/item/clothing/glasses/hud/health/fluff/chakat_tempest
+	name = "Custom Health Scanner HUD"
+	desc = "A customized heads-up display that scans the humans in view and provides accurate data about their health status."
+	icon_state = "phealthhud"
+	icon = 'icons/obj/custom_items.dmi'
+	item_state = "phealthhud"
+	body_parts_covered = 0
+
+
+/obj/item/clothing/glasses/hud/health/tempisthud/process_hud(var/mob/M)
+	process_med_hud(M, 1)
+
+//adk09:Lethe
+/obj/item/clothing/head/helmet/hos/fluff/lethe
+	name = "Lethe's Hat"
+	desc = " This is Lethe's Hat! A little tag attached inside reads: 'If found please return to Lethe! Or else!' It looks rather worn in. It also lacks armor."
+	icon_state = "hoscap"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+
+//BeyondMyLife:Kilano Soryu
+/obj/item/clothing/under/dress/fluff/kilano
+	name = "Bleached Dress"
+	desc = "It appears that this was once a captain's dress, it's blueish color has been turned white by bleach, only the gold markings remain to slightly signify what it once was."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "kilanodress"
+	item_state = "kilanodress"
+	item_color = "kilanodress"
+	species_restricted = null
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+
+/obj/item/clothing/gloves/fluff/kilano
+	name = "Bleached Gloves"
+	desc = "Some old captain's gloves, bleached white, almost unrecognizable from the color change besides the gold trim."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "kilanogloves"
+	item_state = "kilanogloves"
+	item_color = "kilanogloves"
+	species_restricted = null

@@ -1526,6 +1526,67 @@ datum
 				..()
 				return
 
+
+////////////////////////// Anti-Noms Drugs //////////////////////////
+
+		ickypak
+			name = "Ickypak"
+			id = "ickypak"
+			description = "A foul-smelling green liquid, for inducing muscle contractions to expel accidentally ingested things."
+			reagent_state = LIQUID
+			color = "#0E900E"
+			overdose = REAGENTS_OVERDOSE
+
+			on_mob_life(var/mob/living/M as mob)
+				M.make_dizzy(1)
+				M.adjustHalLoss(2)
+
+				for(var/I in M.vore_organs)
+					var/datum/belly/B = M.vore_organs[I]
+					for(var/atom/movable/A in B.internal_contents)
+						if(isliving(A))
+							var/mob/living/P = A
+							if(P.absorbed)
+								continue
+						if(prob(5))
+							playsound(M, 'sound/effects/splat.ogg', 50, 1)
+							B.release_specific_contents(A)
+				..()
+				return
+
+		unsorbitol
+			name = "Unsorbitol"
+			id = "unsorbitol"
+			description = "A frothy pink liquid, for causing cellular-level hetrogenous structure separation."
+			reagent_state = LIQUID
+			color = "#EF77E5"
+			overdose = REAGENTS_OVERDOSE
+
+			on_mob_life(var/mob/living/M as mob)
+				M.make_dizzy(1)
+				M.adjustHalLoss(1)
+				if(!M.confused) M.confused = 1
+				M.confused = max(M.confused, 20)
+				M.hallucination += 15
+
+				for(var/I in M.vore_organs)
+					var/datum/belly/B = M.vore_organs[I]
+
+					if(B.digest_mode == DM_ABSORB) //Turn off absorbing on bellies
+						B.digest_mode = DM_HOLD
+
+					for(var/mob/living/P in B.internal_contents)
+						if(!P.absorbed)
+							continue
+
+						else if(prob(1))
+							playsound(M, 'sound/vore/schlorp.ogg', 50, 1)
+							P.absorbed = 0
+							M.visible_message("<font color='green'><b>Something spills into [M]'s [lowertext(B.name)]!</b></font>")
+						else
+				..()
+				return
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		nanites
@@ -2206,22 +2267,22 @@ datum
 			id = "protein"
 			color = "#440000"
 
-			on_mob_life(var/mob/living/M, var/alien)
+			/*on_mob_life(var/mob/living/M, var/alien) // Vorestation edit
 				if(alien && alien == IS_SKRELL)
 					M.adjustToxLoss(0.5)
 					M.nutrition -= nutriment_factor
-				..()
+				..()*/
 
 		nutriment/egg // Also bad for skrell. Not a child of protein because it might mess up, not sure.
 			name = "egg yolk"
 			id = "egg"
 			color = "#FFFFAA"
 
-			on_mob_life(var/mob/living/M, var/alien)
+			/*on_mob_life(var/mob/living/M, var/alien) // Vorestation edit
 				if(alien && alien == IS_SKRELL)
 					M.adjustToxLoss(0.5)
 					M.nutrition -= nutriment_factor
-				..()
+				..()*/
 
 		lipozine
 			name = "Lipozine" // The anti-nutriment.
@@ -2234,10 +2295,10 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
-				M.nutrition = max(M.nutrition - nutriment_factor, 0)
+				M.weight = max(M.weight - nutriment_factor, 0)
 				M.overeatduration = 0
-				if(M.nutrition < 0)//Prevent from going into negatives.
-					M.nutrition = 0
+				if(M.nutrition < 70)//Prevent from going into negatives.
+					M.nutrition = 70
 				..()
 				return
 
@@ -2649,6 +2710,19 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				M.nutrition += nutriment_factor
+				..()
+				return
+
+		digestive_enzymes
+			name = "Digestive Enzymes"
+			id = "digestive_enzymes"
+			description = "Digestive enzymes are one of the most corrosive fluids known in the universe. Rapidly breaks down and digests anything it comes in contact with."
+			reagent_state = LIQUID
+			color = "#673910" // rgb: 103, 57, 16
+
+			on_mob_life(var/mob/living/M as mob)
+				if(!M) M = holder.my_atom
+				M.adjustFireLoss(3) // 3 burn per tick. About as much as digestion.
 				..()
 				return
 
@@ -3408,8 +3482,21 @@ datum
 				for(var/datum/reagent/ethanol/A in holder.reagent_list)
 					if(A != src && isnum(A.data)) d += A.data
 
-				if(alien && alien == IS_SKRELL) //Skrell get very drunk very quickly.
-					d*=5
+				/*if(alien && alien == IS_SKRELL) //Skrell get very drunk very quickly. // Vorestation edit
+					d*=5*/
+
+				//Seems like a big benefit to be huge, but the idea is that a full bottle of vodka would be a shots worth to them.
+				//This is still not enough to make that true, but is a fair balance imo.
+				switch(M.playerscale)
+					if(RESIZE_HUGE to INFINITY)
+						d*= (1.0/4.5)
+					if(RESIZE_BIG to RESIZE_HUGE)
+						d*= (1.0/2.5)
+					if(RESIZE_SMALL to RESIZE_BIG)
+						d*= 1.50 // 50% more drunk per unit of ethanol~
+					if(RESIZE_TINY to RESIZE_SMALL)
+						d*= 2 // get drunk twice as fast. Very generous considering a shot could be as tall as them~
+
 
 				M.dizziness += dizzy_adj.
 				if(d >= slur_start && d < pass_out)

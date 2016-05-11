@@ -1,6 +1,6 @@
 /obj/structure/closet/crate/secure/loot
 	name = "abandoned crate"
-	desc = "What could be inside?"
+	desc = "A dusty crate, sealed with a tamper-resistant deca-code lock. What could be inside?"
 	icon_state = "securecrate"
 	icon_opened = "securecrateopen"
 	icon_closed = "securecrate"
@@ -9,6 +9,7 @@
 	var/attempts = 10
 	var/codelen = 4
 	locked = 1
+	tamper_proof = 1
 
 /obj/structure/closet/crate/secure/loot/New()
 	..()
@@ -150,7 +151,7 @@
 /obj/structure/closet/crate/secure/loot/togglelock(mob/user as mob)
 	if(locked)
 		user << "<span class='notice'>The crate is locked with a Deca-code lock.</span>"
-		var/input = input(usr, "Enter [codelen] digits.", "Deca-Code Lock", "") as text
+		var/input = input(usr, "Enter [codelen] digits. All digits must be unique.", "Deca-Code Lock", "") as text
 		if(in_range(src, user))
 			if (input == code)
 				user << "<span class='notice'>The crate unlocks!</span>"
@@ -188,18 +189,20 @@
 				user << "<span class='notice'>* Anti-Tamper Bomb will activate after [src.attempts] failed access attempts.</span>"
 			if (lastattempt != null)
 				var/list/guess = list()
+				var/list/answer = list()
 				var/bulls = 0
 				var/cows = 0
-				for(var/i = 1, i < codelen + 1, i++)
-					var/a = copytext(lastattempt, i, i+1) // Stuff the code into the list
-					guess += a
-					guess[a] = i
-				for(var/i in guess) // Go through list and count matches
-					var/a = findtext(code, i)
-					if(a == guess[i])
-						++bulls
-					else if(a)
+				for(var/i=1,i<=length(lastattempt),i++)
+					guess += text2num(copytext(lastattempt,i,i+1))
+				for(var/i=1,i<=length(lastattempt),i++)
+					answer += text2num(copytext(code,i,i+1))
+				for(var/i = 1, i < codelen + 1, i++) // Go through list and count matches
+					if( answer.Find(guess[i],1,codelen+1))
 						++cows
-				user << "<span class='notice'>Last code attempt had [bulls] correct digits at correct positions and [cows] correct digits at incorrect positions.</span>"
+					if( answer[i] == guess[i])
+						++bulls
+						--cows
+
+				user << "<span class='notice'>Last code attempt, [lastattempt], had [bulls] correct digits at correct positions and [cows] correct digits at incorrect positions.</span>"
 		else ..()
 	else ..()

@@ -31,7 +31,7 @@
 	var/obj/effect/decal/cleanable/target
 	var/obj/effect/decal/cleanable/oldtarget
 	var/oldloc = null
-	req_access = list(access_janitor)
+	req_access = list(access_janitor, access_hydroponics, access_bar, access_kitchen)
 	var/path[] = new()
 	var/patrol_path[] = null
 	var/beacon_freq = 1445		// navigation beacon frequency
@@ -302,6 +302,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 	target_types += /obj/effect/decal/cleanable/liquid_fuel
 	target_types += /obj/effect/decal/cleanable/mucus
 	target_types += /obj/effect/decal/cleanable/dirt
+	target_types += /obj/effect/decal/cleanable/pie_smudge
 
 	if(src.blood)
 		target_types += /obj/effect/decal/cleanable/blood/

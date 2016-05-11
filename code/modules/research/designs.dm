@@ -303,6 +303,12 @@ datum/design/circuit/comm_server
 	req_tech = list("programming" = 3)
 	build_path = /obj/item/weapon/circuitboard/comm_server
 
+datum/design/circuit/comm_monitor
+	name = "telecommunications traffic control console"
+	id = "comm_traffic"
+	req_tech = list("programming" = 3)
+	build_path = /obj/item/weapon/circuitboard/comm_traffic
+
 datum/design/circuit/message_monitor
 	name = "messaging monitor console"
 	id = "message_monitor"
@@ -743,6 +749,15 @@ datum/design/tech_disk
 	build_type = PROTOLATHE | AUTOLATHE
 	materials = list("$metal" = 30, "$glass" = 10)
 	build_path = /obj/item/weapon/disk/tech_disk
+	
+datum/design/flora_disk
+	name = "Flora Data Disk"
+	desc = "Produce additional disks for storing plant genetic data."
+	id = "flora_disk"
+	req_tech = list("programming" = 1)
+	build_type = PROTOLATHE | AUTOLATHE
+	materials = list("$metal" = 30, "$glass" = 10)
+	build_path = /obj/item/weapon/disk/botany
 
 ///////////////////////////////////
 /////Non-Board Computer Stuff//////
@@ -1025,6 +1040,12 @@ datum/design/circuit/editor
 	id = "editor"
 	req_tech = list("programming" = 2, "engineering" = 2)
 	build_path = /obj/item/weapon/circuitboard/editor
+	
+datum/design/circuit/suspension_field_generator
+	name = "suspension field generator"
+	id = "suspension_field_generator"
+	req_tech = list("programming" = 3, "magnets" = 3, "engineering" = 3) //Let's not be too brutal on the poor xenoarchs.
+	build_path = /obj/item/weapon/circuitboard/suspension_field_generator
 
 ////////////////////////////////////////
 /////////Civilian Circuit Boards////////
@@ -1723,3 +1744,12 @@ datum/design/item/tacheadset
 	build_type = PROTOLATHE
 	materials = list("$metal" = 75, "$glass" = 50, "$gold" = 30, "$diamond" = 50)
 	build_path = /obj/item/device/radio/headset/headset_sec/tactical/empty
+
+/datum/design/excavationdrill
+	name = "Excavation Drill"
+	desc = "Advanced archaeological drill combining ultrasonic excitation and bluespace manipulation to provide extreme precision. The diamond tip is adjustable from 1 to 30 cm."
+	id = "excavationdrill"
+	req_tech = list("materials" = 6, "powerstorage" = 3, "engineering" = 3, "bluespace" = 4)
+	build_type = PROTOLATHE
+	materials = list("$iron" = 4000, "$glass" = 1000, "$silver" = 1000, "$diamond" = 500)
+	build_path = /obj/item/weapon/pickaxe/excavationdrill

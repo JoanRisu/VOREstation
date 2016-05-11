@@ -9,7 +9,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pda"
 	item_state = "electronic"
-	w_class = 2.0
+	w_class = 1.0
 	slot_flags = SLOT_ID | SLOT_BELT
 
 	//Main variables
@@ -526,7 +526,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 					if(FM.img)
 						usr << browse_rsc(FM.img, "pda_news_tmp_photo_[feed["channel"]]_[index].png")
 					// News stories are HTML-stripped but require newline replacement to be properly displayed in NanoUI
-					var/body = replacetext(FM.body, "\n", "<br>")
+					var/body = bayreplacetext(FM.body, "\n", "<br>")
 					messages[++messages.len] = list("author" = FM.author, "body" = body, "message_type" = FM.message_type, "time_stamp" = FM.time_stamp, "has_image" = (FM.img != null), "caption" = FM.caption, "index" = index)
 			feed["messages"] = messages
 
@@ -693,7 +693,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				if (mode == 1)
 					note = html_decode(n)
 					notehtml = note
-					note = replacetext(note, "\n", "<br>")
+					note = bayreplacetext(note, "\n", "<br>")
 			else
 				ui.close()
 		if("Toggle Messenger")

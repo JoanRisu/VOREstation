@@ -10,7 +10,7 @@
 	heat_protection =    HEAD|FACE|EYES
 	cold_protection =    HEAD|FACE|EYES
 	brightness_on = 4
-	sprite_sheets = list("Tajara" = 'icons/mob/species/tajaran/helmet.dmi', "Sergal" = 'icons/mob/species/sergal/helmet.dmi',"Skrell" = 'icons/mob/species/skrell/helmet.dmi',"Unathi" = 'icons/mob/species/unathi/helmet.dmi',"Akula" = 'icons/mob/species/akula/helmet.dmi') //Temporary suits. You only need to update the .dmi files in their respective folders.
+	sprite_sheets = list("Tajara" = 'icons/mob/species/tajaran/helmet.dmi', "Sergal" = 'icons/mob/species/sergal/helmet.dmi',"Skrell" = 'icons/mob/species/skrell/helmet.dmi',"Unathi" = 'icons/mob/species/unathi/helmet.dmi',"Akula" = 'icons/mob/species/akula/helmet.dmi',"Nevrean" = 'icons/mob/species/nevrean/helmet.dmi') //Temporary suits. You only need to update the .dmi files in their respective folders.
 	species_restricted = null
 
 /obj/item/clothing/gloves/rig
@@ -32,7 +32,7 @@
 
 /obj/item/clothing/suit/space/rig
 	name = "chestpiece"
-	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit)
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/storage/backpack) // ToDo: Add a compact backpack for rigsuits.
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	heat_protection =    UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection =    UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -43,7 +43,7 @@
 	breach_threshold = 38
 	resilience = 0.2
 	can_breach = 1
-	sprite_sheets = list("Tajara" = 'icons/mob/species/tajaran/suit.dmi',"Unathi" = 'icons/mob/species/unathi/suit.dmi', "Sergal" = 'icons/mob/species/sergal/suit.dmi',"Akula" = 'icons/mob/species/akula/suit.dmi') //Temporary suits. I found it weird that skrells didn't have chestpieces in the original
+	sprite_sheets = list("Tajara" = 'icons/mob/species/tajaran/suit.dmi',"Unathi" = 'icons/mob/species/unathi/suit.dmi', "Sergal" = 'icons/mob/species/sergal/suit.dmi',"Akula" = 'icons/mob/species/akula/suit.dmi',"Nevrean" = 'icons/mob/species/nevrean/suit.dmi') //Temporary suits. I found it weird that skrells didn't have chestpieces in the original
 	supporting_limbs = list()
 
 //TODO: move this to modules

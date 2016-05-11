@@ -86,8 +86,8 @@ var/blobevent   = 0
 
 var/diary          = null
 var/href_logfile   = null
-var/station_name   = "NSS Virgo Orbital Research Establishment"
-var/game_version   = "Baystation12"
+var/station_name   = "NSS Adephagia"
+var/game_version   = "Vorestation"
 var/changelog_hash = ""
 var/game_year      = (text2num(time2text(world.realtime, "YYYY")) + 544)
 
@@ -222,13 +222,14 @@ var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J
 // Chemistry lists.
 var/list/tachycardics  = list("coffee", "inaprovaline", "hyperzine", "nitroglycerin", "thirteenloko", "nicotine") // Increase heart rate.
 var/list/bradycardics  = list("neurotoxin", "cryoxadone", "clonexadone", "space_drugs", "stoxin")                 // Decrease heart rate.
-var/list/heartstopper  = list("potassium_phorochloride", "zombie_powder") // This stops the heart.
+var/list/heartstopper  = list("potassium_chlorophoride", "zombie_powder") // This stops the heart.
 var/list/cheartstopper = list("potassium_chloride")                       // This stops the heart when overdose is met. -- c = conditional
 
 // Used by robots and robot preferences.
 var/list/robot_module_types = list(
 	"Standard", "Engineering", "Construction", "Surgeon",  "Crisis",
-	"Miner",    "Janitor",     "Service",      "Clerical", "Security"
+	"Miner",    "Janitor",     "Service",      "Clerical", "Security",
+	"Xenoarch", "K9", "Medihound"
 )
 
 // Some scary sounds.

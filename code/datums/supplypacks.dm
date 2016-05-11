@@ -401,6 +401,7 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 					/obj/item/weapon/storage/firstaid/toxin,
 					/obj/item/weapon/storage/firstaid/o2,
 					/obj/item/weapon/storage/firstaid/adv,
+					/obj/item/weapon/storage/firstaid/crashkit,
 					/obj/item/weapon/reagent_containers/glass/bottle/antitoxin,
 					/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline,
 					/obj/item/weapon/reagent_containers/glass/bottle/stoxin,
@@ -1037,7 +1038,7 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 					/obj/item/clothing/head/collectable/rabbitears,
 					/obj/item/clothing/head/collectable/wizard,
 					/obj/item/clothing/head/collectable/hardhat,
-					/obj/item/clothing/head/collectable/HoS,
+					/obj/item/clothing/head/collectable/hos,
 					/obj/item/clothing/head/collectable/thunderdome,
 					/obj/item/clothing/head/collectable/swat,
 					/obj/item/clothing/head/collectable/slime,
@@ -1808,6 +1809,23 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 /datum/supply_packs/empty
 	name = "Empty crate"
 	cost = 10
+	containertype = /obj/structure/closet/crate
+	containername = "crate"
+	group = "Miscellaneous"
+
+/datum/supply_packs/workout
+	name = "Fitness crate"
+	contains = list(/obj/machinery/workout/shipped,
+					/obj/machinery/workout/shipped,
+					/obj/machinery/punching_clown,
+					/obj/machinery/punching_clown,
+					/obj/machinery/punching_clown,
+					/obj/machinery/punching_clown,
+					/obj/item/clothing/gloves/boxing,
+					/obj/item/clothing/gloves/boxing/green,
+					/obj/item/clothing/gloves/boxing/blue,
+					/obj/item/clothing/gloves/boxing/yellow)
+	cost = 60
 	containertype = /obj/structure/closet/crate
 	containername = "crate"
 	group = "Miscellaneous"

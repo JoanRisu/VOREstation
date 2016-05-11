@@ -14,6 +14,8 @@
 	fire_delay = 1 //rapid fire
 
 /obj/item/weapon/gun/energy/laser/mounted
+	name = "mounted laser"
+	fire_sound = 'sound/weapons/droideka.ogg'
 	self_recharge = 1
 	use_external_power = 1
 
@@ -98,6 +100,12 @@ obj/item/weapon/gun/energy/retro
 	set popup_menu = 1
 
 	toggle_scope(2.0)
+
+/obj/item/weapon/gun/energy/sniperrifle/practice
+	name = "practice laser sniper"
+	desc = "A modified version of the L.W.A.P. sniepr rifle, complete with a SMART aiming-system scope. This one fires less concentrated energy bolts designed for target practice."
+	fire_sound = 'sound/weapons/lasercannonfire.ogg'
+	projectile_type = /obj/item/projectile/beam/practice
 
 ////////Laser Tag////////////////////
 
